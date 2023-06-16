@@ -8,7 +8,7 @@ console.log("Here's the data you're working with");
 console.log({ CATEGORIES, TASKS });
 
 function App() {
-  const [selectBtn, setSelectBtn] = useState("")
+  const [selectState, setSelectBtn] = useState("")
   const [tasks, setTasks] = useState(TASKS)
 
   const handleSelectState = (e) => setSelectBtn(e.target.value)
@@ -29,15 +29,14 @@ function App() {
 
   //filter funtionality
   const filterTasks = (task) => {
-    if (selectBtn === "All" || selectBtn === "") return true;
-    else return (task.props.category === selectBtn)
+    if (selectState === "All" || selectState === "") return true;
+    else return (task.props.category === selectState)
   }
 
   return (
     <div className="App">
       <h2>My tasks</h2>
-      <CategoryFilter categories={CATEGORIES} handleSelectState={handleSelectState} state={selectBtn} />
-      {/*   /> */}
+      <CategoryFilter categories={CATEGORIES} handleSelectState={handleSelectState} selectState={selectState} />
       <NewTaskForm categories={CATEGORIES} onTaskFormSubmit={onTaskFormSubmit} />
       <TaskList tasks={tasks} filterTasks={filterTasks} handleDelete={handleDelete} />
     </div>

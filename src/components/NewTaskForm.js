@@ -1,14 +1,14 @@
 import React, {useState} from "react";
 
 function NewTaskForm({categories, onTaskFormSubmit}) {
-  const [newTask, setFormData] = useState({text : "", category : "Code"})
+  const [newTask, setNewTask] = useState({text : "", category : "Code"})
 
   function handleChange(e){
     if(e.target.name === "text"){
-      setFormData({text : e.target.value, category : newTask.category})
+     setNewTask({text : e.target.value, category : newTask.category})
     }
     if(e.target.name === "category"){
-      setFormData({text : newTask.text, category : e.target.value})
+     setNewTask({text : newTask.text, category : e.target.value})
     }
   }
   
@@ -16,7 +16,7 @@ function NewTaskForm({categories, onTaskFormSubmit}) {
     e.preventDefault()
     const taskObj = {...newTask}
     onTaskFormSubmit(taskObj);
-    setFormData({text : "", category : taskObj.category})
+   setNewTask({text : "", category : taskObj.category})
   }
 
   return (
