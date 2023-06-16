@@ -16,7 +16,7 @@ function NewTaskForm({categories, onTaskFormSubmit}) {
     e.preventDefault()
     const taskObj = {...newTask}
     onTaskFormSubmit(taskObj);
-    setFormData({text : "", category : "Code"})
+    setFormData({text : "", category : taskObj.category})
   }
 
   return (
